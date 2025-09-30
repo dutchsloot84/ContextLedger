@@ -1,0 +1,141 @@
+{
+  "branch_scanned": "work",
+  "files_in_scope": [
+    "scripts/generate_history.py",
+    "config/defaults.yml",
+    ".github/workflows/weekly-history.yml",
+    "docs/history/README.md",
+    "docs/history/HISTORY_TEMPLATE.md",
+    "docs/history/2025-09-25-checkin.md",
+    "docs/history/2025-09-26-checkin.md",
+    "docs/history/2025-09-29-checkin.md",
+    "docs/history/notes/2025-09-26-dutchsloot84-ReleaseCopilot-AI-137.md",
+    "docs/history/notes/2025-09-29-dutchsloot84-ReleaseCopilot-AI-137.md",
+    "docs/history/notes/.gitkeep",
+    "docs/context/context-index.json"
+  ],
+  "file_metadata": {
+    "scripts/generate_history.py": {
+      "size_bytes": 43816,
+      "last_commit": "25a1d76494c627468efbfd1fc7dae1d54feae797",
+      "last_commit_date": "2025-09-30T12:33:06-07:00"
+    },
+    "config/defaults.yml": {
+      "size_bytes": 1130,
+      "last_commit": "5f19d90b8ac01c8c34bc8714083c9ce5f9640326",
+      "last_commit_date": "2025-09-26T11:16:31-07:00"
+    },
+    ".github/workflows/weekly-history.yml": {
+      "size_bytes": 3217,
+      "last_commit": "f78d06352ec527ebc397c54a59b5c87515226f60",
+      "last_commit_date": "2025-09-26T13:56:13-07:00"
+    },
+    "docs/history/README.md": {
+      "size_bytes": 1042,
+      "last_commit": "0e41343c550ad95eabead4727f2959d4a7058f48",
+      "last_commit_date": "2025-09-26T10:55:11-07:00"
+    },
+    "docs/history/HISTORY_TEMPLATE.md": {
+      "size_bytes": 473,
+      "last_commit": "0e41343c550ad95eabead4727f2959d4a7058f48",
+      "last_commit_date": "2025-09-26T10:55:11-07:00"
+    },
+    "docs/history/2025-09-25-checkin.md": {
+      "size_bytes": 1023,
+      "last_commit": "0e41343c550ad95eabead4727f2959d4a7058f48",
+      "last_commit_date": "2025-09-26T10:55:11-07:00"
+    },
+    "docs/history/2025-09-26-checkin.md": {
+      "size_bytes": 13696,
+      "last_commit": "236484ca97a620b4c222e4ebb4cad80bbfa047db",
+      "last_commit_date": "2025-09-26T14:56:03-07:00"
+    },
+    "docs/history/2025-09-29-checkin.md": {
+      "size_bytes": 17488,
+      "last_commit": "d4d9eda08836c72a84529c30f34b9c2715651a84",
+      "last_commit_date": "2025-09-29T10:14:38-07:00"
+    },
+    "docs/history/notes/2025-09-26-dutchsloot84-ReleaseCopilot-AI-137.md": {
+      "size_bytes": 2582,
+      "last_commit": "b8e3f1206edcf20964093e626ddf51449fd218d5",
+      "last_commit_date": "2025-09-26T21:59:45+00:00"
+    },
+    "docs/history/notes/2025-09-29-dutchsloot84-ReleaseCopilot-AI-137.md": {
+      "size_bytes": 2582,
+      "last_commit": "d4d9eda08836c72a84529c30f34b9c2715651a84",
+      "last_commit_date": "2025-09-29T10:14:38-07:00"
+    },
+    "docs/history/notes/.gitkeep": {
+      "size_bytes": 0,
+      "last_commit": "5f19d90b8ac01c8c34bc8714083c9ce5f9640326",
+      "last_commit_date": "2025-09-26T11:16:31-07:00"
+    },
+    "docs/context/context-index.json": {
+      "size_bytes": 1382,
+      "last_commit": "d4d9eda08836c72a84529c30f34b9c2715651a84",
+      "last_commit_date": "2025-09-29T10:14:38-07:00"
+    }
+  },
+  "py_deps_external": [
+    "requests",
+    "PyYAML",
+    "boto3"
+  ],
+  "runtime_env": {
+    "python_min": "3.9",
+    "python_ci": "3.10",
+    "env_vars": [
+      "GITHUB_TOKEN",
+      "GITHUB_REPOSITORY",
+      "HISTORIAN_ENABLE_JIRA",
+      "HISTORIAN_JIRA_REGEX",
+      "AWS_ACCESS_KEY_ID",
+      "AWS_SECRET_ACCESS_KEY",
+      "AWS_SESSION_TOKEN",
+      "AWS_DEFAULT_REGION"
+    ]
+  },
+  "config_paths": [
+    "config/defaults.yml"
+  ],
+  "template_paths": [
+    "docs/history/HISTORY_TEMPLATE.md"
+  ],
+  "action_workflows": [
+    ".github/workflows/weekly-history.yml"
+  ],
+  "features_detected": {
+    "projects_v2": true,
+    "markers": ["Decision", "Note", "Blocker", "Action"],
+    "artifacts": ["github_actions", "s3"],
+    "jira_parsing": true,
+    "index_writer": "docs/context/context-index.json",
+    "missing_modules": ["scripts.github.ProjectsV2Client"]
+  },
+  "graph": {
+    "scripts/generate_history.py": {
+      "imports_local": [
+        "scripts.github"
+      ],
+      "imports_external": [
+        "requests",
+        "yaml",
+        "boto3"
+      ],
+      "assets": [
+        "config/defaults.yml",
+        "docs/history/HISTORY_TEMPLATE.md",
+        "docs/history/notes/**/*.md",
+        "docs/context/context-index.json"
+      ],
+      "feature_handlers": {
+        "projects_v2": "_collect_project_section (ProjectsV2Client.query_issues_with_status)",
+        "markers": "_extract_comment_markers / _collect_notes_section",
+        "artifact_github_actions": "_collect_github_actions_artifacts",
+        "artifact_s3": "_collect_s3_artifacts",
+        "jira": "_collect_jira_references",
+        "index": "_ensure_history_index"
+      }
+    }
+  }
+}
