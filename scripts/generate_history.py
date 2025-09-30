@@ -19,12 +19,22 @@ from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 import requests
 import yaml
 
-# Path safeguard for local/CI runs when PYTHONPATH is unset.
-REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
 
-from scripts.github import ProjectsV2Client
+def _ensure_repo_root_on_path() -> None:
+    """Ensure the repository root is available for legacy script imports."""
+
+    repo_root = Path(__file__).resolve().parents[1]
+    if str(repo_root) not in sys.path:
+        sys.path.insert(0, str(repo_root))
+
+
+if __name__ == "__main__":
+    _ensure_repo_root_on_path()
+
+
+from scripts.github import ProjectsV2Client  # noqa: E402
+
+# fmt: off
 
 LOGGER = logging.getLogger(__name__)
 ISO_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
@@ -1245,6 +1255,8 @@ def main() -> None:
         relative_output = output_path.resolve()
     _ensure_history_index(index_path, relative_output, document.since, document.until, document.counts)
 
+
+# fmt: on
 
 if __name__ == "__main__":
     main()
