@@ -3,6 +3,7 @@ import json
 import sys
 from pathlib import Path
 
+
 def parse_args(argv=None):
     p = argparse.ArgumentParser(
         prog="contextledger",
@@ -15,6 +16,7 @@ def parse_args(argv=None):
     p.add_argument("--template", help="Path to markdown template (optional)")
     p.add_argument("--debug-scan", action="store_true", help="Verbose debug output")
     return p.parse_args(argv)
+
 
 def main(argv=None):
     args = parse_args(argv)
@@ -34,6 +36,7 @@ def main(argv=None):
     if args.debug_scan:
         print(json.dumps({"args": vars(args), "index_path": str(idx)}, indent=2))
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
